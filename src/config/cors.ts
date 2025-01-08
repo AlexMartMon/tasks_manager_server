@@ -9,8 +9,8 @@ export const corsConfig: CorsOptions = {
         if (process.argv[2] === '--api') {
             whitelist.push(undefined, null) //Enabling CORS for thunderclient to test my apis from IDE
         }
-        console.log(origin)
-        if (whitelist.includes(origin)) {
+        //TODO fix this for production, cors origin is not working for render
+        if (!origin  || whitelist.includes(origin)) {
             callback(null, true)
         } else {
             callback(new Error('CORS Error'))
